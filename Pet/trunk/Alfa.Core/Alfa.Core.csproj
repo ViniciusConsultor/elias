@@ -103,6 +103,7 @@
     <Compile Include="Exception\BussinessException.cs" />
     <Compile Include="Exception\HandlerException.cs" />
     <Compile Include="Exception\IHandlerException.cs" />
+    <Compile Include="Extension\ListViewExtension.cs" />
     <Compile Include="Mapper\AssemblyConfig.cs" />
     <Compile Include="Mapper\CascadeConvention.cs" />
     <Compile Include="Mapper\AutomappingConfiguration.cs" />
