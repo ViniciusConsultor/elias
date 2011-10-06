@@ -6,6 +6,7 @@ using System;
 using Alfa.Core.Mapper;
 
 using Alfa.Pet.Model.Services;
+using System.Collections.Generic;
 
 
 namespace Alfa.Pet.Test
@@ -27,6 +28,11 @@ namespace Alfa.Pet.Test
             //}
             //return;
             Marca marca = new Marca();
+
+            List<String> colunas = marca.Properties();
+
+
+
             Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(marca);
             foreach (string erro in marca.Validate())
             {
