@@ -23,10 +23,25 @@ namespace Alfa.Pet.Win.forms
             listView1.DataBind(
             Locator.GetComponet<IRepository<Marca>>().GetAll().ToList());
 
+
+            if (listView1.Items.Count == 1)
+                Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(
+                    new Marca { Descricao = "teste" });
+
+            listView1.DataBind(
+           Locator.GetComponet<IRepository<Marca>>().GetAll().ToList());
+
+
+
             listView1.Width = 500;
             listView1.Columns[1].Width = 300;
         }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0) return;
+            textBox1.Text = listView1.SelectedItems[0].SubItems[0].Text;
+            textBox2.Text = listView1.SelectedItems[0].SubItems[1].Text;
+        }
     }
-
-
 }
