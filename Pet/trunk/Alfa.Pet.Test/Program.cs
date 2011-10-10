@@ -7,16 +7,29 @@ using Alfa.Core.Mapper;
 
 using Alfa.Pet.Model.Services;
 using System.Collections.Generic;
+using Castle.Core.Logging;
 
 
 namespace Alfa.Pet.Test
 {
+
+    public class lixo
+    {
+        public ILogger Logger
+        {
+            get;
+            set;
+        }
+    }
+
     class Program
     {
         static void Main()
         {
-           // log4net.Config.XmlConfigurator.Configure();
-            //ILogger logger = NullLogger.Instance;
+            Locator.GetComponet<lixo>().Logger.Error("teste");
+
+            // log4net.Config.XmlConfigurator.Configure();
+            //NullLogger.Instance.Error("erro graVADO");
             //try
             //{
             //    throw new ApplicationException("lixo");
@@ -27,19 +40,19 @@ namespace Alfa.Pet.Test
             //    logger.Error("teste de erro");
             //}
             //return;
-            Marca marca = new Marca();
+            //Marca marca = new Marca();
 
-            List<String> colunas = marca.Properties();
+            //List<String> colunas = marca.Properties();
 
 
 
-            Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(marca);
-            foreach (string erro in marca.Validate())
-            {
-                Console.WriteLine(erro);
-            }
-            Console.Read();
-            
+            //Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(marca);
+            //foreach (string erro in marca.Validate())
+            //{
+            //    Console.WriteLine(erro);
+            //}
+            //Console.Read();
+
             //Locator.GetComponet<CadastroService>().Incluir();
             //Console.WriteLine(Locator.GetComponet<IRepository<Produto>>().GetAll().Count());
             //Console.ReadLine();
@@ -73,7 +86,7 @@ namespace Alfa.Pet.Test
             //Console.WriteLine(registers.Count());
             //Console.ReadLine();
 
-           // FluentNHibernateConfigurationBuilder.CreateDatabase();
+            // FluentNHibernateConfigurationBuilder.CreateDatabase();
             Console.WriteLine("banco regerado");
             Console.ReadKey();
         }
