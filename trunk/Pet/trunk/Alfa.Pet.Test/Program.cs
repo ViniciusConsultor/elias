@@ -11,20 +11,21 @@ namespace Alfa.Pet.Test
     {
         static void Main()
         {
-            Locator.GetComponet<IHandlerException>().DisplayMessage("teste");
-            Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
-            Console.ReadLine();
+            //Locator.GetComponet<IHandlerException>().DisplayMessage("teste");
+            //Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
+            //Console.ReadLine();
 
-            //Marca marca = new Marca();
+            Marca marca = new Marca();
+            marca.Descricao = "charopinho";
 
             //List<String> colunas = marca.Properties();
 
-            //Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(marca);
-            //foreach (string erro in marca.Validate())
-            //{
-            //    Console.WriteLine(erro);
-            //}
-            //Console.Read();
+            Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(marca);
+            foreach (string erro in marca.Validate())
+            {
+                Console.WriteLine(erro);
+            }
+            Console.Read();
 
             //Locator.GetComponet<CadastroService>().Incluir();
             //Console.WriteLine(Locator.GetComponet<IRepository<Produto>>().GetAll().Count());
