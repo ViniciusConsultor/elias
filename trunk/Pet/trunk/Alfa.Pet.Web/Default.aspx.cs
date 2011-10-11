@@ -9,32 +9,18 @@ using Alfa.Pet.Model.Services;
 using Alfa.Core.Repository;
 using Alfa.Core.Container;
 using Alfa.Core.Exception;
+using Alfa.Core.Web;
 
-namespace WebApplication1
+namespace Alfa.Pet.Web
 {
-    public class PaginaBase : System.Web.UI.Page
-    {
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-        //    this.Error += new EventHandler(PaginaBase_Error);
-        //}
 
-        //private void PaginaBase_Error(object sender, EventArgs e)
-        //{
-        //    Response.Write(Server.GetLastError().Message);
-        //    Server.ClearError();
-        //}
-        
-    }
-
-
-
-    public partial class _Default : PaginaBase
+    public partial class _Default : PageBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             Locator.GetComponet<IHandlerException>().DisplayMessage("teste");
             Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
+            Button1_Click(null, null);
         }
 
         protected void Button1_Click(object sender, EventArgs e)

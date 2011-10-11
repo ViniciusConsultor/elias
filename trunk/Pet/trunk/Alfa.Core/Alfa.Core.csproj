@@ -120,42 +120,6 @@
     <Compile Include="Validation\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\Castle.Core.dll" />
-    <Content Include="lib\Castle.Core.xml" />
-    <Content Include="lib\Castle.DynamicProxy2.dll" />
-    <Content Include="lib\Castle.Facilities.AutoTx.dll" />
-    <Content Include="lib\Castle.Facilities.AutoTx.pdb" />
-    <Content Include="lib\Castle.Facilities.AutoTx.xml" />
-    <Content Include="lib\Castle.Facilities.Logging.dll" />
-    <Content Include="lib\Castle.Facilities.Logging.xml" />
-    <Content Include="lib\Castle.Facilities.NHibernateIntegration.dll" />
-    <Content Include="lib\Castle.Facilities.NHibernateIntegration.pdb" />
-    <Content Include="lib\Castle.Facilities.NHibernateIntegration.xml" />
-    <Content Include="lib\Castle.MicroKernel.dll" />
-    <Content Include="lib\Castle.Services.Logging.Log4netIntegration.dll" />
-    <Content Include="lib\Castle.Services.Transaction.dll" />
-    <Content Include="lib\Castle.Services.Transaction.xml" />
-    <Content Include="lib\Castle.Windsor.dll" />
-    <Content Include="lib\Castle.Windsor.xml" />
-    <Content Include="lib\FluentNHibernate.dll" />
-    <Content Include="lib\FluentNHibernate.pdb" />
-    <Content Include="lib\FluentNHibernate.xml" />
-    <Content Include="lib\Iesi.Collections.dll" />
-    <Content Include="lib\Iesi.Collections.pdb" />
-    <Content Include="lib\Iesi.Collections.xml" />
-    <Content Include="lib\LinFu.DynamicProxy.dll" />
-    <Content Include="lib\log4net.dll" />
-    <Content Include="lib\NHibernate.ByteCode.Castle.dll" />
-    <Content Include="lib\NHibernate.ByteCode.Castle.pdb" />
-    <Content Include="lib\NHibernate.ByteCode.Castle.xml" />
-    <Content Include="lib\NHibernate.ByteCode.LinFu.dll" />
-    <Content Include="lib\NHibernate.dll" />
-    <Content Include="lib\NHibernate.pdb" />
-    <Content Include="lib\NHibernate.xml" />
-    <Content Include="lib\nunit.framework.dll" />
-    <Content Include="lib\Remotion.Data.Linq.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>

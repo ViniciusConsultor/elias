@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using Alfa.Pet.Model;
 using Alfa.Core;
-using NHibernate;
 using Alfa.Core.Container;
 using Alfa.Core.Unit;
 
