@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WebApplication1")]
+[assembly: AssemblyTitle("Alfa.Pet.Web")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("INFNET")]
-[assembly: AssemblyProduct("WebApplication1")]
+[assembly: AssemblyProduct("Alfa.Pet.Web")]
 [assembly: AssemblyCopyright("Copyright © INFNET 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
