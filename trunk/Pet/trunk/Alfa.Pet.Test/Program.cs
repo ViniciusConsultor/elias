@@ -1,50 +1,23 @@
-﻿using Alfa.Core.Container;
+﻿using System;
+using System.Linq;
+using Alfa.Core.Container;
+using Alfa.Core.Exception;
 using Alfa.Core.Repository;
 using Alfa.Pet.Model;
-using System.Linq;
-using System;
-using Alfa.Core.Mapper;
-
-using Alfa.Pet.Model.Services;
-using System.Collections.Generic;
-using Castle.Core.Logging;
-
 
 namespace Alfa.Pet.Test
 {
-
-    public class lixo
-    {
-        public ILogger Logger
-        {
-            get;
-            set;
-        }
-    }
-
     class Program
     {
         static void Main()
         {
-            Locator.GetComponet<lixo>().Logger.Error("teste");
+            Locator.GetComponet<IHandlerException>().DisplayMessage("teste");
+            Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
+            Console.ReadLine();
 
-            // log4net.Config.XmlConfigurator.Configure();
-            //NullLogger.Instance.Error("erro graVADO");
-            //try
-            //{
-            //    throw new ApplicationException("lixo");
-
-            //}
-            //catch
-            //{
-            //    logger.Error("teste de erro");
-            //}
-            //return;
             //Marca marca = new Marca();
 
             //List<String> colunas = marca.Properties();
-
-
 
             //Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(marca);
             //foreach (string erro in marca.Validate())
@@ -59,37 +32,7 @@ namespace Alfa.Pet.Test
 
             //TesteDeInclusao();
         }
-        static void Teste1()
-        {
-            //var sessionFactory = NHibernateSessionHelper<Cliente>.CreateSessionFactory(true);
-
-            //using (var session = sessionFactory.OpenSession())
-            //{
-            //    using (var transaction = session.BeginTransaction())
-            //    {
-            //        var produto = new Produto { Descricao = "PetSuite" };
-            //        var tipoProduto = new ProdutoTipo { Descricao = "Ração" };
-
-            //        produto.ProdutoTipo = tipoProduto;
-            //        tipoProduto.Produtos.Add(produto);
-
-            //        session.SaveOrUpdate(produto);
-
-            //        transaction.Commit();
-            //    }
-            //}
-            //Console.ReadKey();
-        }
-        static void Teste2()
-        {
-            //var registers = Locator.GetComponet<IRepository<Produto>>().GetAll();
-            //Console.WriteLine(registers.Count());
-            //Console.ReadLine();
-
-            // FluentNHibernateConfigurationBuilder.CreateDatabase();
-            Console.WriteLine("banco regerado");
-            Console.ReadKey();
-        }
+    
         static void TesteDeInclusao()
         {
             Console.WriteLine("teste de inclusão e recuperação de registros");

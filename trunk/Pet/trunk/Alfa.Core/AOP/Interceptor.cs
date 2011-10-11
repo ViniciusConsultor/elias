@@ -6,6 +6,7 @@ namespace Alfa.Core.AOP
 {
     public class Interceptor : IInterceptor
     {
+        //todo: criar default interceptor
         private IHandlerException handlerException;
 
         public Interceptor()
@@ -25,7 +26,7 @@ namespace Alfa.Core.AOP
             }
             catch (System.Exception ex)
             {
-                handlerException.TratarException(ex);
+                handlerException.TryException(ex);
             }
         }
     }

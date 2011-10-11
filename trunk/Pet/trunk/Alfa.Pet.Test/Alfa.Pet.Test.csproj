@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Alfa.Pet.Test</RootNamespace>
     <AssemblyName>Alfa.Pet.Test</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -104,6 +104,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Alfa.Core.Container\Alfa.Core.Container.csproj">
+      <Project>{A780EEE6-7BA1-420F-AD2C-78DC200FB4BE}</Project>
+      <Name>Alfa.Core.Container</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Alfa.Core\Alfa.Core.csproj">
       <Project>{2ED8ABEF-52D9-4F1D-BD1B-792363A7DD03}</Project>
       <Name>Alfa.Core</Name>

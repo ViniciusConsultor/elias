@@ -8,6 +8,7 @@ using Alfa.Pet.Model;
 using Alfa.Pet.Model.Services;
 using Alfa.Core.Repository;
 using Alfa.Core.Container;
+using Alfa.Core.Exception;
 
 namespace WebApplication1
 {
@@ -32,7 +33,8 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Locator.GetComponet<IHandlerException>().DisplayMessage("teste");
+            Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
