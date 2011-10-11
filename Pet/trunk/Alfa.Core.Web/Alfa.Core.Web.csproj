@@ -5,14 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A780EEE6-7BA1-420F-AD2C-78DC200FB4BE}</ProjectGuid>
+    <ProjectGuid>{24EA51D0-A647-4E85-8195-FB26F30AE15D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Alfa.Core.Container</RootNamespace>
-    <AssemblyName>Alfa.Core.Container</AssemblyName>
+    <RootNamespace>Alfa.Core.Web</RootNamespace>
+    <AssemblyName>Alfa.Core.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,23 +31,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\lib\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Windsor">
-      <HintPath>..\lib\Castle.Windsor.dll</HintPath>
+    <Reference Include="NHibernate">
+      <HintPath>..\lib\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Locator.cs" />
+    <Compile Include="HandlerMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Alfa.Core.Container\Alfa.Core.Container.csproj">
+      <Project>{A780EEE6-7BA1-420F-AD2C-78DC200FB4BE}</Project>
+      <Name>Alfa.Core.Container</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Alfa.Core\Alfa.Core.csproj">
+      <Project>{2ED8ABEF-52D9-4F1D-BD1B-792363A7DD03}</Project>
+      <Name>Alfa.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

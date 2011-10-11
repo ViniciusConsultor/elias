@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Alfa.Core.Container;
-using Alfa.Pet.Model;
 using Alfa.Core.Repository;
-using Alfa.Core.Entity;
 using Alfa.Core.Windows.Extension;
+using Alfa.Pet.Model;
+using Alfa.Core.Exception;
 
 namespace Alfa.Pet.Win.forms
 {
@@ -19,6 +14,9 @@ namespace Alfa.Pet.Win.forms
         public teste()
         {
             InitializeComponent();
+
+            Locator.GetComponet<IHandlerException>().DisplayMessage("teste");
+            Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
 
             listView1.DataBind(
             Locator.GetComponet<IRepository<Marca>>().GetAll().ToList());

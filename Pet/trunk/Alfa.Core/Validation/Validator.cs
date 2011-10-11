@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Alfa.Core.Validation;
 using Alfa.Core.Exception;
+using System.Configuration;
 
 namespace Alfa.Core.Validation
 {
@@ -65,15 +66,15 @@ namespace Alfa.Core.Validation
                 allMessagems += message + newLine;
 
             mAsserts.Clear();
-            return allMessagems;            
+            return allMessagems;
         }
 
         private string GetNewLine()
         {
-            if (System.Web.Configuration.WebConfigurationManager.AppSettings["NEW_LINE"] != null)
-                return System.Web.Configuration.WebConfigurationManager.AppSettings["NEW_LINE"];//.ToString();
+            if (ConfigurationManager.AppSettings["NEW_LINE"] != null)
+                return ConfigurationManager.AppSettings["NEW_LINE"];//.ToString();
 
-            if (System.Web.HttpContext.Current != null) return "<br/>";
+            //if (System.Web.HttpContext.Current != null) return "<br/>";
             return "\n";
         }
 
