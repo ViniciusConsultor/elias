@@ -23,7 +23,7 @@ namespace Alfa.Pet.Win.forms
 
 
             if (listView1.Items.Count == 1)
-                Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(
+                Locator.GetComponet<IRepository<Marca>>().Save(
                     new Marca { Descricao = "teste" });
 
             listView1.DataBind(

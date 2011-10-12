@@ -37,13 +37,13 @@ namespace Alfa.Core.Repository
             return Session.Linq<T>();
         }
 
-        public void InsertOnSubmit(T entity)
+        public void Save(T entity)
         {
             validator.Assert(entity.Validate(), true);
             Session.Save(entity);
         }
 
-        public void DeleteOnSubmit(T entity)
+        public void Delete(T entity)
         {
             Session.Delete(entity);
         }
@@ -63,14 +63,14 @@ namespace Alfa.Core.Repository
             return GetAll();
         }
 
-        void IRepository.InsertOnSubmit(object entity)
+        void IRepository.Save(object entity)
         {
-            InsertOnSubmit((T)entity);
+            Save((T)entity);
         }
 
-        void IRepository.DeleteOnSubmit(object entity)
+        void IRepository.Delete(object entity)
         {
-            DeleteOnSubmit((T)entity);
+            Delete((T)entity);
         }
     }
 }

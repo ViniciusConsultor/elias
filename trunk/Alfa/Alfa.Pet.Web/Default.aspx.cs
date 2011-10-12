@@ -44,12 +44,12 @@ namespace Alfa.Pet.Web
             IRepository<Marca> rep = Locator.GetComponet<IRepository<Marca>>();
 
             Marca a = new Marca();
-            rep.InsertOnSubmit(a);
+            rep.Save(a);
 
             Marca marca1 = new Marca { Descricao = "pet" };
-            rep.InsertOnSubmit(marca1);
+            rep.Save(marca1);
             Marca marca2 = new Marca { Descricao = "pet" };
-            rep.InsertOnSubmit(marca2);
+            rep.Save(marca2);
 
 
         }

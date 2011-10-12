@@ -28,7 +28,7 @@ namespace Alfa.Pet.Model.Services
             produto.Descricao = "teste";
             produto.Preco = 0;
 
-            Locator.GetComponet<IRepository<Produto>>().InsertOnSubmit(produto);
+            Locator.GetComponet<IRepository<Produto>>().Save(produto);
             //    tx.Commit();
             //}
             mIUnitOfWork.Rollback();
@@ -36,7 +36,7 @@ namespace Alfa.Pet.Model.Services
 
         public void IncluirProduto(Produto produto, int quantidade)
         {
-            Locator.GetComponet<IRepository<Produto>>().InsertOnSubmit(produto);
+            Locator.GetComponet<IRepository<Produto>>().Save(produto);
             Locator.GetComponet<IRepository<Produto>>().GetById(1);
             IQueryable<Estoque> estoques = Locator.GetComponet<IRepository<Estoque>>().GetAll();
 

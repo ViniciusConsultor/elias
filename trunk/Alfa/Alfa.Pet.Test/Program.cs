@@ -21,7 +21,7 @@ namespace Alfa.Pet.Test
 
             List<Marca> marcas = rep.GetAll().ToList();
             foreach (Marca marca in marcas)
-                rep.DeleteOnSubmit(marca);
+                rep.Delete(marca);
 
             rep.SubmitChanges();
 
@@ -33,7 +33,7 @@ namespace Alfa.Pet.Test
             entity.Descricao = "charopinho";
 
             entity.Produtos.Add(new Produto { Descricao = "coca", Preco = 1, ProdutoTipo = new ProdutoTipo { Descricao = "refri" } });
-            rep.InsertOnSubmit(entity);
+            rep.Save(entity);
 
 
 

@@ -7,8 +7,8 @@ namespace Alfa.Core.Repository
     {
         T GetById(int id);
         IQueryable<T> GetAll();
-        void InsertOnSubmit(T entity);
-        void DeleteOnSubmit(T entity);
+        void Save(T entity);
+        void Delete(T entity);
         void SubmitChanges();
     }
 
@@ -16,8 +16,8 @@ namespace Alfa.Core.Repository
     {
         object GetById(int id);
         IQueryable GetAll();
-        void InsertOnSubmit(object entity);
-        void DeleteOnSubmit(object entity);
+        void Save(object entity);
+        void Delete(object entity);
         void SubmitChanges();
     }
 }

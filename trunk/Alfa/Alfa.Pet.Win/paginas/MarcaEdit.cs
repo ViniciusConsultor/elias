@@ -46,7 +46,7 @@ namespace Alfa.Pet.Win.paginas
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(BuildMarca());
+            Locator.GetComponet<IRepository<Marca>>().Save(BuildMarca());
             this.Close();
         }
         private Marca BuildMarca()
