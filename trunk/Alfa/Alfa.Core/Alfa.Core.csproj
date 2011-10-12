@@ -101,7 +101,7 @@
     <Compile Include="Exception\HandlerException.cs" />
     <Compile Include="Exception\IHandlerException.cs" />
     <Compile Include="Exception\IHandlerMessage.cs" />
-    <Compile Include="Exception\NullHandlerMessage.cs" />
+    <Compile Include="Exception\DefaultHandlerMessage.cs" />
     <Compile Include="Mapper\AssemblyConfig.cs" />
     <Compile Include="Mapper\CascadeConvention.cs" />
     <Compile Include="Mapper\AutomappingConfiguration.cs" />

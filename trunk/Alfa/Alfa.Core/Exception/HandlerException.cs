@@ -12,7 +12,7 @@ namespace Alfa.Core.Exception
             get { return logger; }
             set { logger = value; }
         }
-        private IHandlerMessage handlerMessage = NullHandlerMessage.GetNullHandlerMessage();
+        private IHandlerMessage handlerMessage = DefaultHandlerMessage.Instance;
         public IHandlerMessage HandlerMessage
         {
             get { return handlerMessage; }
@@ -25,7 +25,7 @@ namespace Alfa.Core.Exception
             DisplayMessage(GetMessage(ex));
             LogError(ex);
         }
-        public void DisplayMessage(string message)
+        private void DisplayMessage(string message)
         {
             HandlerMessage.Show(message);            
         }

@@ -18,7 +18,7 @@ namespace Alfa.Pet.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Locator.GetComponet<IHandlerException>().DisplayMessage("teste");
+            Locator.GetComponet<IHandlerMessage>().Show("teste");
             Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
             Button1_Click(null, null);
         }
