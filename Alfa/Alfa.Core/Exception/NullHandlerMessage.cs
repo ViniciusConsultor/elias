@@ -19,7 +19,7 @@ namespace Alfa.Core.Exception
 
         public void Show(string message)
         {
-            Console.Write(message);
+            Console.WriteLine(message);
         }
     }
 }

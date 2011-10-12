@@ -111,6 +111,7 @@
   <ItemGroup>
     <None Include="config\castle.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <EmbeddedResource Include="config\log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
