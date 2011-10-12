@@ -15,7 +15,7 @@ namespace Alfa.Pet.Win.forms
         {
             InitializeComponent();
 
-            Locator.GetComponet<IHandlerException>().DisplayMessage("teste");
+            Locator.GetComponet<IHandlerMessage>().Show("teste");
             Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
 
             listView1.DataBind(

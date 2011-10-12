@@ -12,10 +12,10 @@ namespace Alfa.Pet.Test
     {
         static void Main()
         {
-            IHandlerException handler = Locator.GetComponet<IHandlerException>();
+            IHandlerMessage handler = DefaultHandlerMessage.Instance;
 
-            handler.DisplayMessage("inicio do caso de testes ");
-            handler.DisplayMessage("excluindo registros pre existentes");
+            handler.Show("inicio do caso de testes ");
+            handler.Show("excluindo registros pre existentes");
 
             IRepository<Marca> rep = Locator.GetComponet<IRepository<Marca>>();
 
@@ -25,9 +25,9 @@ namespace Alfa.Pet.Test
 
             rep.SubmitChanges();
 
-            handler.DisplayMessage("registros excluidos");
+            handler.Show("registros excluidos");
 
-            handler.DisplayMessage("incluindo um registro");
+            handler.Show("incluindo um registro");
 
             Marca entity = new Marca();
             entity.Descricao = "charopinho";
@@ -39,13 +39,13 @@ namespace Alfa.Pet.Test
 
             Console.ReadLine();
 
-            handler.DisplayMessage("registros incluidos");
+            handler.Show("registros incluidos");
 
-            handler.DisplayMessage("exibindo registros incluidos");
+            handler.Show("exibindo registros incluidos");
 
 
             foreach (Marca marca in rep.GetAll())
-                handler.DisplayMessage(string.Format("Marca: {0}, Produto: {1}, Tipo de Produto: {2}",
+                handler.Show(string.Format("Marca: {0}, Produto: {1}, Tipo de Produto: {2}",
                     marca.Descricao, marca.Produtos[0].Descricao, marca.Produtos[0].ProdutoTipo.Descricao));
 
             Console.Read();
