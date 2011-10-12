@@ -22,7 +22,7 @@ namespace Alfa.Pet.Win.paginas
             IRepository<Marca> rep = Locator.GetComponet<IRepository<Marca>>();
 
             Marca a = new Marca();
-            rep.InsertOnSubmit(a);
+            rep.Save(a);
 
             BuildTela();
         }
@@ -49,7 +49,7 @@ namespace Alfa.Pet.Win.paginas
             Locator.GetComponet<IUnitOfWork>().BeginTransaction();
 
             Marca entity = Locator.GetComponet<IRepository<Marca>>().GetById(codigo);
-            Locator.GetComponet<IRepository<Marca>>().DeleteOnSubmit(entity);
+            Locator.GetComponet<IRepository<Marca>>().Delete(entity);
 
             Locator.GetComponet<IUnitOfWork>().Commit();
 
