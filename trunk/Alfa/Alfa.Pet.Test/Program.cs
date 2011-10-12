@@ -4,6 +4,7 @@ using Alfa.Core.Container;
 using Alfa.Core.Exception;
 using Alfa.Core.Repository;
 using Alfa.Pet.Model;
+using System.Collections.Generic;
 
 namespace Alfa.Pet.Test
 {
@@ -11,46 +12,44 @@ namespace Alfa.Pet.Test
     {
         static void Main()
         {
-            //Locator.GetComponet<IHandlerException>().DisplayMessage("teste");
-            //Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
-            //Console.ReadLine();
+            IHandlerException handler = Locator.GetComponet<IHandlerException>();
 
-            Marca marca = new Marca();
-            marca.Descricao = "charopinho";
+            handler.DisplayMessage("inicio do caso de testes ");
+            handler.DisplayMessage("excluindo registros pre existentes");
 
-            //List<String> colunas = marca.Properties();
+            IRepository<Marca> rep = Locator.GetComponet<IRepository<Marca>>();
 
-            Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(marca);
-            foreach (string erro in marca.Validate())
-            {
-                Console.WriteLine(erro);
-            }
+            List<Marca> marcas = rep.GetAll().ToList();
+            foreach (Marca marca in marcas)
+                rep.DeleteOnSubmit(marca);
+
+            rep.SubmitChanges();
+
+            handler.DisplayMessage("registros excluidos");
+
+            handler.DisplayMessage("incluindo um registro");
+
+            Marca entity = new Marca();
+            entity.Descricao = "charopinho";
+
+            entity.Produtos.Add(new Produto { Descricao = "coca", Preco = 1, ProdutoTipo = new ProdutoTipo { Descricao = "refri" } });
+            rep.InsertOnSubmit(entity);
+
+
+
+            Console.ReadLine();
+
+            handler.DisplayMessage("registros incluidos");
+
+            handler.DisplayMessage("exibindo registros incluidos");
+
+
+            foreach (Marca marca in rep.GetAll())
+                handler.DisplayMessage(string.Format("Marca: {0}, Produto: {1}, Tipo de Produto: {2}",
+                    marca.Descricao, marca.Produtos[0].Descricao, marca.Produtos[0].ProdutoTipo.Descricao));
+
             Console.Read();
 
-            //Locator.GetComponet<CadastroService>().Incluir();
-            //Console.WriteLine(Locator.GetComponet<IRepository<Produto>>().GetAll().Count());
-            //Console.ReadLine();
-
-            //TesteDeInclusao();
-        }
-    
-        static void TesteDeInclusao()
-        {
-            Console.WriteLine("teste de inclusão e recuperação de registros");
-            Marca marca = new Marca();
-            marca.Descricao = "Foster";
-
-            Locator.GetComponet<IRepository<Marca>>().InsertOnSubmit(marca);
-
-            IRepository<Marca> repository = Locator.GetComponet<IRepository<Marca>>();
-            Marca marcaGravada = repository.GetAll().Where(item => item.Descricao == "Foster").SingleOrDefault();
-
-            if (marcaGravada != null)
-                Console.WriteLine(marcaGravada.Descricao + "=" + marcaGravada.Id.ToString());
-            else
-                Console.WriteLine("marca nao encontrada");
-
-            Console.ReadKey();
 
         }
     }
