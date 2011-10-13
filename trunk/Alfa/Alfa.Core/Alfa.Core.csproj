@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AOP\Interceptor.cs" />
+    <Compile Include="Container\Locator.cs" />
     <Compile Include="Exception\BussinessException.cs" />
     <Compile Include="Exception\HandlerException.cs" />
     <Compile Include="Exception\IHandlerException.cs" />
@@ -139,12 +140,6 @@
   <ItemGroup>
     <Folder Include="Extension\" />
     <Folder Include="Helper\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Alfa.Core.Container\Alfa.Core.Container.csproj">
-      <Project>{A780EEE6-7BA1-420F-AD2C-78DC200FB4BE}</Project>
-      <Name>Alfa.Core.Container</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
