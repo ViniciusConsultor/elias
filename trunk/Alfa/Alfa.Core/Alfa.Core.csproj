@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Alfa.Core</RootNamespace>
     <AssemblyName>Alfa.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -115,8 +115,10 @@
     <Compile Include="Repository\NHibernateRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Rule\IPersistenceRule.cs" />
     <Compile Include="Unit\IUnitOfWork.cs" />
     <Compile Include="Unit\UnitOfWork.cs" />
+    <Compile Include="Validation\DefaultValidator.cs" />
     <Compile Include="Validation\IValidator.cs" />
     <Compile Include="Validation\Validator.cs" />
   </ItemGroup>
