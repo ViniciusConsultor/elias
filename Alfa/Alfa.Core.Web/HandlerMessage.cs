@@ -16,7 +16,7 @@ namespace Alfa.Core.Web
             {
                 Page page = HttpContext.Current.CurrentHandler as Page;
 
-                if (ScriptManager.GetCurrent(page).IsInAsyncPostBack)
+                if (ScriptManager.GetCurrent(page) != null && ScriptManager.GetCurrent(page).IsInAsyncPostBack)
                     ScriptManager.RegisterStartupScript(page, page.GetType(), "script_de_erro", "alert('" + message + "');", true);
                 else
                     page.ClientScript.RegisterStartupScript(page.GetType(), "script_de_erro", "alert('" + message + "');", true);
