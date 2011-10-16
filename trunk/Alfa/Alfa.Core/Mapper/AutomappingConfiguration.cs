@@ -14,7 +14,7 @@ namespace Alfa.Core.Mapper
         {
             // specify the criteria that types must meet in order to be mapped
             // any type for which this method returns false will not be mapped.
-            return type.Namespace == AssemblyConfig.GetAssembly().GetName().Name;
+            return type.Namespace == AssemblyConfig.Namespace();
         }
 
         public override bool IsComponent(Type type)

@@ -4,19 +4,25 @@ using Castle.Facilities.NHibernateIntegration;
 using NHibernate;
 using Alfa.Core.Validation;
 using Alfa.Core.Entity;
+using Alfa.Core.Rule;
 
 namespace Alfa.Core.Repository
 {
     public class NHibernateRepository<T> : IRepository<T>, IRepository where T : EntityBase
     {
-
+        private IPersistenceRule<T> persistenceRule = DefaultPersistenceRule<T>.Instance;
+       
         private readonly ISessionManager sessionManager;
-        private IValidator validator;
 
-        public NHibernateRepository(ISessionManager sessionManager, IValidator validator)
+        public NHibernateRepository(ISessionManager sessionManager)
         {
             this.sessionManager = sessionManager;
-            this.validator = validator;
+        }
+
+        public NHibernateRepository(ISessionManager sessionManager, IPersistenceRule<T> ppersistenceRule)
+        {
+            this.sessionManager = sessionManager;
+            this.persistenceRule = ppersistenceRule;
         }
 
         private ISession Session
@@ -37,15 +43,18 @@ namespace Alfa.Core.Repository
             return Session.Linq<T>();
         }
 
-        public void Save(T entity)
+        public bool Save(T entity)
         {
-            validator.Assert(entity.Validate(), true);
+            persistenceRule.OnSave(entity);
             Session.Save(entity);
+            return true;
         }
 
-        public void Delete(T entity)
+        public bool Delete(T entity)
         {
+            persistenceRule.OnDelete(entity);
             Session.Delete(entity);
+            return true;
         }
 
         public void SubmitChanges()
@@ -63,14 +72,14 @@ namespace Alfa.Core.Repository
             return GetAll();
         }
 
-        void IRepository.Save(object entity)
+        bool IRepository.Save(object entity)
         {
-            Save((T)entity);
+            return Save((T)entity);
         }
 
-        void IRepository.Delete(object entity)
+        bool IRepository.Delete(object entity)
         {
-            Delete((T)entity);
+            return Delete((T)entity);
         }
     }
 }

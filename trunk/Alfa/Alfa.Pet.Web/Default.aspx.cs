@@ -10,6 +10,7 @@ using Alfa.Core.Repository;
 using Alfa.Core.Container;
 using Alfa.Core.Exception;
 using Alfa.Core.Web;
+using Alfa.Core.Mapper;
 
 namespace Alfa.Pet.Web
 {
@@ -18,9 +19,27 @@ namespace Alfa.Pet.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Locator.GetComponet<IHandlerMessage>().Show("teste");
-            Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
-            Button1_Click(null, null);
+
+            FluentNHibernateConfigurationBuilder.Create();
+            return;
+            Cliente cli = new Cliente();
+            cli.Nome = "fabio";
+            cli.Nascimento = DateTime.Now.AddYears(-21);
+            IRepository<Cliente> rep = Locator.GetComponet<IRepository<Cliente>>();
+            rep.Save(cli);
+
+            //Marca marca = new Marca();
+            //IRepository<Marca> rep = Locator.GetComponet<IRepository<Marca>>();
+            //rep.Save(marca);
+
+
+            //base.Alert("sucesso");
+            //base.ExecuteScript("alert('sera');");
+
+            //base.AlertRedirect("voce não pode", "about.aspx");
+            //Locator.GetComponet<IHandlerMessage>().Show("teste");
+            //Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
+            //Button1_Click(null, null);
         }
 
         protected void Button1_Click(object sender, EventArgs e)

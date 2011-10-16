@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Usuario.cs" />
+    <Compile Include="Rule\ClienteRule.cs" />
     <Compile Include="Service\CadastroService.cs" />
     <Compile Include="Entity\Cliente.cs" />
     <Compile Include="Entity\Compra.cs" />

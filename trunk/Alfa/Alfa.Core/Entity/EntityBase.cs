@@ -8,11 +8,20 @@ namespace Alfa.Core.Entity
 {
     public class EntityBase
     {
+
+        /// <summary>
+        /// Método IsValid verifica se atributos obrigatórios foram preenchidos ou estão em estado válido 
+        /// </summary>
+        /// <returns></returns>
         public virtual bool IsValid()
         {
             return Validate().Count() == 0;
         }
-        public virtual List<string> Validate()
+        /// <summary>
+        /// Método Validate retorna lista de atributos obrigatórios não preenchidos ou em estado inválido
+        /// </summary>
+        /// <returns></returns>
+        public virtual IEnumerable<string> Validate()
         {
             return new List<string>();
         }

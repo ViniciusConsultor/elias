@@ -99,7 +99,7 @@
     <Compile Include="AOP\Interceptor.cs" />
     <Compile Include="Container\Locator.cs" />
     <Compile Include="Exception\BussinessException.cs" />
-    <Compile Include="Exception\HandlerException.cs" />
+    <Compile Include="Exception\DefaultHandlerException.cs" />
     <Compile Include="Exception\IHandlerException.cs" />
     <Compile Include="Exception\IHandlerMessage.cs" />
     <Compile Include="Exception\DefaultHandlerMessage.cs" />
@@ -115,12 +115,12 @@
     <Compile Include="Repository\NHibernateRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Rule\DefaultPersistenceRule.cs" />
     <Compile Include="Rule\IPersistenceRule.cs" />
     <Compile Include="Unit\IUnitOfWork.cs" />
     <Compile Include="Unit\UnitOfWork.cs" />
-    <Compile Include="Validation\DefaultValidator.cs" />
     <Compile Include="Validation\IValidator.cs" />
-    <Compile Include="Validation\Validator.cs" />
+    <Compile Include="Validation\DefaultValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
