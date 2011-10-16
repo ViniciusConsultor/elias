@@ -12,11 +12,13 @@ namespace Alfa.Core.Mapper
     {
         public void Apply(IManyToOneInstance instance)
         {
-            instance.Cascade.All();
+            instance.Cascade.SaveUpdate();
         }
 
         public void Apply(IOneToManyCollectionInstance instance)
         {
+            //instance.Cascade.SaveUpdate();
+            instance.Cascade.AllDeleteOrphan();
             instance.Cascade.All();
         }
 

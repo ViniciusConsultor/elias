@@ -15,5 +15,6 @@ namespace Alfa.Pet.Model
         /// </summary>
         public virtual decimal Preco { get; set; }
         public virtual ProdutoTipo ProdutoTipo { get; set; }
+        public virtual Marca Marca { get; set; }
     }
 }
