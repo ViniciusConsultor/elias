@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Alfa.Core.Exception
 {
-    public class BussinessException : System.Exception
+    public class BusinessException : System.Exception
     {
-        public BussinessException(string message) :
+        public BusinessException(string message) :
             base(message) { }
     }
 }

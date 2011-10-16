@@ -1,13 +1,18 @@
-﻿using Castle.DynamicProxy;
+﻿using System;
 using Alfa.Core.Exception;
-using Castle.Core.Logging;
+using Castle.DynamicProxy;
 
 namespace Alfa.Core.AOP
 {
     public class Interceptor : IInterceptor
     {
         private IHandlerException handlerException = DefaultHandlerException.Instance;
-        
+
+        public Interceptor()
+        {
+
+        }
+
         public Interceptor(IHandlerException phandlerException)
         {
             handlerException = phandlerException;
@@ -21,8 +26,9 @@ namespace Alfa.Core.AOP
             }
             catch (System.Exception ex)
             {
-                //todo: validar retorno
-                invocation.ReturnValue = false;
+                if (invocation.Method.ReturnType.IsPrimitive) //tipos primitivos precisam ter o valor de retorno setado
+                    invocation.ReturnValue = Activator.CreateInstance(invocation.Method.ReturnType);
+                
                 handlerException.TryException(ex);
             }
         }

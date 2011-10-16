@@ -106,19 +106,17 @@ namespace Alfa.Core.Web
         }
 
         public void Alert(string message)
-        {
-            string script = string.Format("alert('{0}');", message);
-            Locator.GetComponet<IHandlerMessage>().Show(script);
+        {            
+            Locator.GetComponet<IHandlerMessage>().Show(message);
         }
         public void AlertRedirect(string message, string page)
         {
             string script = string.Format("alert('{0}'); location.href='{1}';", message, page);
-            Locator.GetComponet<IHandlerMessage>().Show(script);
+            Locator.GetComponet<Alfa.Core.Web.HandlerMessage>().ExecuteScript(script);
         }
         public void ExecuteScript(string script)
         {
-            Locator.GetComponet<IHandlerMessage>().Show(script);
+            Locator.GetComponet<Alfa.Core.Web.HandlerMessage>().ExecuteScript(script);
         }
     }
-
 }
