@@ -4,6 +4,7 @@ namespace Alfa.Core.Exception
 {
     public sealed class DefaultHandlerMessage : IHandlerMessage
     {
+        #region Singleton
         private static volatile DefaultHandlerMessage instance;
         private static object syncRoot = new Object();
 
@@ -26,6 +27,7 @@ namespace Alfa.Core.Exception
                 return instance;
             }
         }
+        #endregion
 
         public void Show(string message)
         {

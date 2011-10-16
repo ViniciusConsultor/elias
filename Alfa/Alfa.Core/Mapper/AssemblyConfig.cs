@@ -19,8 +19,13 @@ namespace Alfa.Core.Mapper
         public static System.Reflection.Assembly GetAssembly()
         {
             return Assembly.Load(
-                System.Configuration.ConfigurationManager.AppSettings["Assembly"]
+                System.Configuration.ConfigurationManager.AppSettings["ASSEMBLY"]
             );
+        }
+
+        public static String Namespace()
+        {
+            return System.Configuration.ConfigurationManager.AppSettings["NAMESPACE"];
         }
     }
 }

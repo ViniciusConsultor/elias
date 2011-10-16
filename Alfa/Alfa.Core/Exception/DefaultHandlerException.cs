@@ -4,8 +4,33 @@ using Castle.Core.Logging;
 
 namespace Alfa.Core.Exception
 {
-    public class HandlerException : IHandlerException
+    public class DefaultHandlerException : IHandlerException
     {
+        #region Singleton
+        private static volatile DefaultHandlerException instance;
+        private static object syncRoot = new object();
+
+        private DefaultHandlerException()
+        { }
+
+        public static DefaultHandlerException Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                            instance = new DefaultHandlerException();
+                    }
+                }
+
+                return instance;
+            }
+        }
+        #endregion
+
         private ILogger logger = NullLogger.Instance;
         public ILogger Logger
         {
@@ -13,12 +38,12 @@ namespace Alfa.Core.Exception
             set { logger = value; }
         }
         private IHandlerMessage handlerMessage = DefaultHandlerMessage.Instance;
-        public IHandlerMessage HandlerMessage
+        
+        public DefaultHandlerException(IHandlerMessage phandlerMessage)
         {
-            get { return handlerMessage; }
-            set { handlerMessage = value; }
+            handlerMessage = phandlerMessage;
         }
-       
+
         public void TryException(System.Exception ex)
         {
             RollbackTransaction();
@@ -27,7 +52,7 @@ namespace Alfa.Core.Exception
         }
         private void DisplayMessage(string message)
         {
-            HandlerMessage.Show(message);            
+            handlerMessage.Show(message);
         }
         public void Log(string message)
         {

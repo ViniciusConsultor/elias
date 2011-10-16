@@ -22,16 +22,14 @@ namespace Alfa.Pet.Model
         {
             return Validate().Count() == 0;
         }
-        public override List<string> Validate()
+        public override IEnumerable<string> Validate()
         {
-            List<string> erros = new List<string>();
             if (Id < 0)
-                erros.Add("Id não pode ser menor que zero.");
+                yield return "Id não pode ser menor que zero.";
 
             if (string.IsNullOrEmpty(Descricao))
-                erros.Add("Informe a descrição.");
+                yield return "Informe a descrição.";
 
-            return erros;
         }
     }
 }

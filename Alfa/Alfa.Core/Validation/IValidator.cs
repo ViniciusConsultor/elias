@@ -6,9 +6,9 @@ namespace Alfa.Core.Validation
     {
         void Assert(bool condition, string message);
         void Assert(bool condition, string message, bool imediateValidate);
-        void Assert(IList<string> messages, bool imediateValidate);
+        void Assert(IEnumerable<string> messages, bool imediateValidate);
 
-        List<string> GetAssertsInvalids();
+        IEnumerable<string> GetAssertsInvalids();
 
         bool HasErros();
         
