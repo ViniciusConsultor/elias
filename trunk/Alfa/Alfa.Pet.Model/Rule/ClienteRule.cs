@@ -22,7 +22,9 @@ namespace Alfa.Pet.Model.Rule
             base.Validator.Validate();
 
             base.Validator.Assert(
-            Locator.GetComponet<IRepository<Cliente>>().GetAll().Count<Cliente>(cli => cli.Nome == entity.Nome) == 0,
+            Locator.GetComponet<IRepository<Cliente>>().GetAll().Count<Cliente>(
+                cli => cli.Nome == entity.Nome && cli.Id != entity.Id
+                ) == 0,
             "Cliente já cadastrado", true);
 
         }

@@ -43,7 +43,7 @@ namespace Alfa.Core.Validation
         {
             if (HasErros())
             {
-                throw new BussinessException(GetMessages());
+                throw new BusinessException(GetMessages());
             }
         }
 

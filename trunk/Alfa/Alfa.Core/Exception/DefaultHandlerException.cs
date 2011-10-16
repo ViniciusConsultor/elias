@@ -66,7 +66,7 @@ namespace Alfa.Core.Exception
         }
         private bool BusinessRuleViolated(System.Exception ex)
         {
-            return ex.GetType() == typeof(BussinessException);
+            return ex.GetType() == typeof(BusinessException);
         }
         private string GetMessage(System.Exception ex)
         {

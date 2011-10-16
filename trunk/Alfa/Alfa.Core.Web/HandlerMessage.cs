@@ -10,20 +10,21 @@ namespace Alfa.Core.Web
 {
     public class HandlerMessage : IHandlerMessage
     {
-        public void Show(string script)
+        public void Show(string message)
         {
-            string formatedScript = script;
-            if (!script.Contains("alert") && !script.Contains("confirm"))
-                formatedScript = string.Format("alert('{0}');", script);
+            ExecuteScript("alert('" + message + "');");
+        }
 
+        public void ExecuteScript(string script)
+        {
             if (HttpContext.Current != null)
             {
                 Page page = HttpContext.Current.CurrentHandler as Page;
 
                 if (ScriptManager.GetCurrent(page) != null && ScriptManager.GetCurrent(page).IsInAsyncPostBack)
-                    ScriptManager.RegisterStartupScript(page, page.GetType(), "script_de_erro", formatedScript, true);
+                    ScriptManager.RegisterStartupScript(page, page.GetType(), "script_de_erro", script, true);
                 else
-                    page.ClientScript.RegisterStartupScript(page.GetType(), "script_de_erro", formatedScript, true);
+                    page.ClientScript.RegisterStartupScript(page.GetType(), "script_de_erro", script, true);
 
             }
         }
