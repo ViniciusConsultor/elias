@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Alfa.Core.Repository;
 using Alfa.Core.Entity;
+using System.Collections.ObjectModel;
 
 namespace Alfa.Pet.Model
 {
@@ -11,17 +12,27 @@ namespace Alfa.Pet.Model
     {
         public virtual int Id { get; private set; }
         public virtual string Descricao { get; set; }
-        public virtual IList<Produto> Produtos { get; set; }
+        
+        private IList<Produto> produtos = new List<Produto>();
+        public virtual IEnumerable<Produto> Produtos
+        {
+            get { return produtos; }
+            private set { produtos = value.ToList(); }
+
+        }
         public Marca()
-        {
-            Produtos = new List<Produto>();
-        }
+        { }
 
-
-        public override bool IsValid()
+        public virtual void AddProduto(Produto produto)
         {
-            return Validate().Count() == 0;
+            produtos.Add(produto);
+            produto.Marca = this;
         }
+        public virtual void RemoveProduto(Produto produto)
+        {            
+            produtos.Remove(produto);
+        }
+        
         public override IEnumerable<string> Validate()
         {
             if (Id < 0)

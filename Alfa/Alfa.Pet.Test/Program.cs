@@ -12,6 +12,26 @@ namespace Alfa.Pet.Test
     {
         static void Main()
         {
+            teste2();
+        }
+
+        public static void teste2()
+        {
+
+            IRepository<Marca> rep = Locator.GetComponet<IRepository<Marca>>();
+
+            Marca entity = rep.GetById(82);
+            Produto produto = entity.Produtos.First();
+            entity.RemoveProduto(produto);
+            rep.Save(entity);
+
+            rep.SubmitChanges();
+            Console.ReadKey();
+
+        }
+
+        public static void teste()
+        {
             IHandlerMessage handler = DefaultHandlerMessage.Instance;
 
             handler.Show("inicio do caso de testes ");
@@ -32,10 +52,9 @@ namespace Alfa.Pet.Test
             Marca entity = new Marca();
             entity.Descricao = "charopinho";
 
-            entity.Produtos.Add(new Produto { Descricao = "coca", Preco = 1, ProdutoTipo = new ProdutoTipo { Descricao = "refri" } });
+            
+            entity.AddProduto(new Produto { Descricao = "coca", Preco = 1, ProdutoTipo = new ProdutoTipo { Descricao = "refri" } });
             rep.Save(entity);
-
-
 
             Console.ReadLine();
 
@@ -46,10 +65,9 @@ namespace Alfa.Pet.Test
 
             foreach (Marca marca in rep.GetAll())
                 handler.Show(string.Format("Marca: {0}, Produto: {1}, Tipo de Produto: {2}",
-                    marca.Descricao, marca.Produtos[0].Descricao, marca.Produtos[0].ProdutoTipo.Descricao));
+                    marca.Descricao, marca.Produtos.First().Descricao, marca.Produtos.First().ProdutoTipo.Descricao));
 
             Console.Read();
-
 
         }
     }
