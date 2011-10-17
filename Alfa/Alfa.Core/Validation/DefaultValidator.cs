@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using Alfa.Core.Validation;
 using Alfa.Core.Exception;
 using System.Configuration;
-using System.Linq; 
+using System.Linq;
 
 namespace Alfa.Core.Validation
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DefaultValidator : IValidator
     {
 
@@ -34,10 +37,12 @@ namespace Alfa.Core.Validation
             }
         }
         #endregion
-        
+
         private List<String> mAsserts = new List<string>();
 
-        /// <summary>Valida se as expressões inseridas são válidas</summary>
+        /// <summary>
+        /// Valida se as expressões inseridas são válidas
+        /// </summary>
         /// <exception cref="">SaudeException. Caso as condiçoes não sejam satisfeitas. </exception>
         public void Validate()
         {
@@ -46,17 +51,22 @@ namespace Alfa.Core.Validation
                 throw new BusinessException(GetMessages());
             }
         }
-
+        /// <summary>
+        /// Avalia se alguma condição foi avaliada como false.
+        /// </summary>
+        /// <returns></returns>
         public bool HasErros()
         {
             return mAsserts.Count > 0;
         }
-
-        public IEnumerable<String> GetAssertsInvalids()
+        /// <summary>
+        /// Lista de mensagens, cuja condição foi avaliada como false.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<String> Erros()
         {
             return mAsserts;
         }
-
         /// <summary>
         /// A partir do teste realizado, caso a condição não seja satisfeita, adiciona a mensagem na lista de erros
         /// </summary>
@@ -67,15 +77,26 @@ namespace Alfa.Core.Validation
             if (!condition)
                 mAsserts.Add(message);
         }
+        /// <summary>
+        /// Método assert assegura que uma condição foi satisfeita.
+        /// </summary>
+        /// <param name="condition">condição a ser avaliada</param>
+        /// <param name="message">Mensagem que deve ser disparada se a condição for avaliada como false.</param>
+        /// <param name="imediateValidate">Se o valor for true, avalia imediatamente se expressões foram satisfeitas</param>
         public void Assert(bool condition, string message, bool imediateValidate)
         {
             Assert(condition, message);
             if (imediateValidate)
                 Validate();
         }
+        /// <summary>
+        /// Método assert assegura que uma condição foi satisfeita.
+        /// </summary>
+        /// <param name="messages">Lista de mensagens a ser disparadas</param>
+        /// <param name="imediateValidate">Se o valor for true, avalia imediatamente se expressões foram satisfeitas</param>
         public void Assert(IEnumerable<string> messages, bool imediateValidate)
         {
-            if (messages == null || messages.Count()  == 0) return;
+            if (messages == null || messages.Count() == 0) return;
             bool condition = false;
             foreach (string message in messages)
                 Assert(condition, message);
@@ -95,13 +116,11 @@ namespace Alfa.Core.Validation
             mAsserts.Clear();
             return allMessagems;
         }
-
         private string GetNewLine()
         {
             if (ConfigurationManager.AppSettings["NEW_LINE"] != null)
                 return ConfigurationManager.AppSettings["NEW_LINE"];//.ToString();
 
-            //if (System.Web.HttpContext.Current != null) return "<br/>";
             return "\\n";
         }
 
