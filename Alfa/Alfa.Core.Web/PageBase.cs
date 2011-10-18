@@ -13,7 +13,7 @@ namespace Alfa.Core.Web
         /// <summary>
         /// Id - Identificador de um objeto
         /// </summary>
-        protected int? Id
+        protected override int? Id
         {
             get
             {
@@ -28,14 +28,14 @@ namespace Alfa.Core.Web
         /// <summary>
         /// Método responsável pelo carregamento inicial da pagina
         /// </summary>
-        protected virtual void PageLoad()
+        protected override void PageLoad()
         {
 
         }
         /// <summary>
         /// Metodo responsável por limpar os controles da pagina 
         /// </summary>
-        protected virtual void PageClear()
+        protected override void PageClear()
         {
             Id = null;
         }
@@ -43,7 +43,7 @@ namespace Alfa.Core.Web
         /// Método responsável pelo carregamento dos controles da página 
         /// </summary>
         /// <param name="entity"></param>
-        protected void PageFill(T entity)
+        protected virtual void PageFill(T entity)
         {
 
         }
@@ -51,10 +51,10 @@ namespace Alfa.Core.Web
         /// Método responsável pela criação de um objeto a partir dos controles da pagina
         /// </summary>
         /// <returns></returns>
-        protected T ObjectBuild()
+        protected virtual T ObjectBuild()
         {
-            return null;
-        }        
+            return (T)null;
+        }
     }
 
     public class PageBase : System.Web.UI.Page
@@ -62,7 +62,7 @@ namespace Alfa.Core.Web
         /// <summary>
         /// Id - Identificador de um objeto
         /// </summary>
-        protected int? Id
+        protected virtual int? Id
         {
             get
             {
@@ -92,7 +92,7 @@ namespace Alfa.Core.Web
         /// Método responsável pelo carregamento dos controles da página 
         /// </summary>
         /// <param name="entity"></param>
-        protected void PageFill(Object entity)
+        protected virtual void PageFill(Object entity)
         {
 
         }
@@ -100,13 +100,13 @@ namespace Alfa.Core.Web
         /// Método responsável pela criação de um objeto a partir dos controles da pagina
         /// </summary>
         /// <returns></returns>
-        protected Object ObjectBuild()
+        protected virtual Object ObjectBuild()
         {
             return null;
         }
 
         public void Alert(string message)
-        {            
+        {
             Locator.GetComponet<IHandlerMessage>().Show(message);
         }
         public void AlertRedirect(string message, string page)
