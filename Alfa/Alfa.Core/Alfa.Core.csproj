@@ -102,12 +102,13 @@
     <Compile Include="Exception\BusinessException.cs" />
     <Compile Include="Exception\DefaultHandlerException.cs" />
     <Compile Include="Exception\IHandlerException.cs" />
+    <Compile Include="Mapper\Convention\EnumConvention.cs" />
     <Compile Include="Message\IHandlerMessage.cs" />
     <Compile Include="Message\DefaultHandlerMessage.cs" />
     <Compile Include="Mapper\AssemblyConfig.cs" />
-    <Compile Include="Mapper\CascadeConvention.cs" />
+    <Compile Include="Mapper\Convention\CascadeConvention.cs" />
     <Compile Include="Mapper\AutomappingConfiguration.cs" />
-    <Compile Include="Mapper\ConcorrencyConvention.cs" />
+    <Compile Include="Mapper\Convention\ConcorrencyConvention.cs" />
     <Compile Include="Mapper\FluentNHibernateConfigurationBuilder.cs" />
     <Compile Include="Mapper\NHibernateLinqExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
