@@ -9,6 +9,7 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate.Cache;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
+using FluentNHibernate.Conventions;
 
 
 namespace Alfa.Core.Mapper
@@ -25,7 +26,7 @@ namespace Alfa.Core.Mapper
         }
 
         protected virtual void ConfigureMapping(AutoPersistenceModel autoPersistenteModel) { }
-       
+
         private AutoPersistenceModel CreateAutomappings()
         {
             // This is the actual automapping - use AutoMap to start automapping,
@@ -35,17 +36,18 @@ namespace Alfa.Core.Mapper
             // supply a configuration instance of your definition to control the automapper.
             // AutoMap.AssemblyOf<Produto>(new AutomappingConfiguration())
             //    .Conventions.Add<CascadeConvention>();
-           
+
             AutoPersistenceModel autoPersistenceModel = AutoMap.Assembly(AssemblyConfig.GetAssembly(), new AutomappingConfiguration());
-           
+
             ConfigureMapping(autoPersistenceModel);
-            
-            autoPersistenceModel.Conventions.Add <CascadeConvention>();
+
+            autoPersistenceModel.Conventions.Add<CascadeConvention>();
             autoPersistenceModel.Conventions.Add<ConcorrencyConvention>();
+            autoPersistenceModel.Conventions.Add<EnumConvention>();
             //return autoPersistenceModel;
 
             //autoPersistenceModel.Conventions.Add(new CascadeConvention(), new ConcorrencyConvention());
-            
+
             return autoPersistenceModel;
         }
 
@@ -76,7 +78,7 @@ namespace Alfa.Core.Mapper
             // and exports a database schema from it
             new SchemaUpdate(config).Execute(true, true);
             //new SchemaExport(config)
-            //    .Create(true, true);
+            //    .Create((true, true);
         }
     }
 }
