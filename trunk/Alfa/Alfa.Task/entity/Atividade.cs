@@ -11,12 +11,14 @@ namespace Alfa.Task.Entity
     {
         public virtual int Id { get; private set; }
         public virtual string Descricao { get; set; }
-        public virtual Profissional Profissional { get; set; }
         public virtual TimeSpan Estimativa { get; set; }
+        public virtual TimeSpan Duracao { get; set; }
         public virtual EnumStatus Status { get; set; }
-        public virtual IEnumerable<Periodo> Periodos { get; set; }
+        public virtual EnumComplexidade Complexidade { get; set; }
         public virtual bool Planejada { get; set; }
-        public virtual Projeto Projeto { get; set; }
 
+        public virtual Profissional Profissional { get; set; }
+        public virtual Projeto Projeto { get; set; }
+        public virtual IEnumerable<Periodo> Periodos { get; set; }
     }
 }
