@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="entity\Atividade.cs" />
+    <Compile Include="entity\EnumComplexidade.cs" />
     <Compile Include="entity\EnumStatus.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
