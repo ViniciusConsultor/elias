@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Alfa.Core.Container;
 using Alfa.Core.Repository;
 using Alfa.Task.Entity;
+using Alfa.Core.Mapper;
 
 namespace Alfa.Task
 {
@@ -21,6 +22,8 @@ namespace Alfa.Task
         }
         private void LoadForm()
         {
+
+            FluentNHibernateConfigurationBuilder.Create();
             
             bindingSource1.DataSource = Locator.GetComponet<IRepository<Atividade>>().GetAll().ToList();
 
@@ -38,3 +41,4 @@ namespace Alfa.Task
         
     }
 }
+    

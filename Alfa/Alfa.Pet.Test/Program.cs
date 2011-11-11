@@ -20,10 +20,12 @@ namespace Alfa.Pet.Test
 
             IRepository<Marca> rep = Locator.GetComponet<IRepository<Marca>>();
 
-            Marca entity = rep.GetById(82);
+            Marca entity = rep.GetAll().FirstOrDefault();
             Produto produto = entity.Produtos.First();
             entity.RemoveProduto(produto);
             rep.Save(entity);
+
+            
 
             rep.SubmitChanges();
             Console.ReadKey();

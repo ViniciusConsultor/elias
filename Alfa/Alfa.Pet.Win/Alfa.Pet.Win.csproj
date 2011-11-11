@@ -211,6 +211,7 @@
     <None Include="App.config" />
     <None Include="config\castle.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="config\log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
