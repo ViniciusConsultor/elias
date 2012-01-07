@@ -112,11 +112,11 @@ namespace Alfa.Core.Web
         public void AlertRedirect(string message, string page)
         {
             string script = string.Format("alert('{0}'); location.href='{1}';", message, page);
-            Locator.GetComponet<Alfa.Core.Web.HandlerMessage>().ExecuteScript(script);
+            new HandlerMessage().ExecuteScript(script);
         }
         public void ExecuteScript(string script)
         {
-            Locator.GetComponet<Alfa.Core.Web.HandlerMessage>().ExecuteScript(script);
+            new HandlerMessage().ExecuteScript(script);
         }
     }
 }
