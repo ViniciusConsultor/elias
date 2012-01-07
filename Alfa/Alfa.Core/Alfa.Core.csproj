@@ -97,7 +97,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AOP\Interceptor.cs" />
     <Compile Include="Container\Locator.cs" />
     <Compile Include="Exception\BusinessException.cs" />
     <Compile Include="Exception\DefaultHandlerException.cs" />
@@ -142,8 +141,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AOP\" />
     <Folder Include="Extension\" />
-    <Folder Include="Helper\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

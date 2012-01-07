@@ -20,5 +20,12 @@ namespace Alfa.Task.Entity
         public virtual Profissional Profissional { get; set; }
         public virtual Projeto Projeto { get; set; }
         public virtual IEnumerable<Periodo> Periodos { get; set; }
+
+        public override IEnumerable<string> Validate()
+        {
+            if (string.IsNullOrEmpty(Descricao))
+                yield return "Informe a descrição.";
+
+        }
     }
 }

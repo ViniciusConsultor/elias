@@ -28,17 +28,18 @@ namespace Alfa.Pet.Web
             //Cliente persistete = rep.GetById(5);
             //rep.Save(persistete);
 
-            //Marca marca = new Marca();
-            //IRepository<Marca> rep = Locator.GetComponet<IRepository<Marca>>();
-            //rep.Save(marca);
+            Marca marca = new Marca();
+            
+            IRepository<Marca> rep = Locator.GetComponet<IRepository<Marca>>();
+            rep.Save(marca);
 
 
             base.Alert("sucesso");
             base.ExecuteScript("alert('sera');");
             base.AlertRedirect("voce não pode", "about.aspx");
-            //Locator.GetComponet<IHandlerMessage>().Show("teste");
+    
             //Locator.GetComponet<IHandlerException>().Log("e não e que funciona");
-            //Button1_Click(null, null);
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)

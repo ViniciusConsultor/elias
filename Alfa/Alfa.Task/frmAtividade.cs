@@ -22,15 +22,17 @@ namespace Alfa.Task
         }
         private void LoadForm()
         {
+            Atividade atividade = new Atividade();
+            Locator.GetComponet<IRepository<Atividade>>().Save(atividade);
 
-            FluentNHibernateConfigurationBuilder.Create();
+            //FluentNHibernateConfigurationBuilder.Create();
             
-            bindingSource1.DataSource = Locator.GetComponet<IRepository<Atividade>>().GetAll().ToList();
+            //bindingSource1.DataSource = Locator.GetComponet<IRepository<Atividade>>().GetAll().ToList();
 
 
-            textBox1.DataBindings.Add("Text", bindingSource1, "Descricao");
+            //textBox1.DataBindings.Add("Text", bindingSource1, "Descricao");
 
-            bindingNavigator1.BindingSource = bindingSource1;
+            //bindingNavigator1.BindingSource = bindingSource1;
             
         }
 

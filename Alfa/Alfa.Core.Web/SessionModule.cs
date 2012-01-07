@@ -21,7 +21,8 @@ namespace Alfa.Core.Web
 
         private void context_Error(object sender, EventArgs e)
         {
-            _session.Rollback();
+            if (_session != null)
+                _session.Rollback();
         }
 
         private void OpenSession(object sender, EventArgs e)
@@ -33,7 +34,8 @@ namespace Alfa.Core.Web
         private void CloseSession(object sender, EventArgs e)
         {
             //_session.Flush();
-            _session.Commit();
+            if (_session != null)
+                _session.Commit();
         }
 
         public void Dispose()
