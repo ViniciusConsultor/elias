@@ -26,6 +26,10 @@ namespace Alfa.Core.Web
                 else
                     page.ClientScript.RegisterStartupScript(page.GetType(), "script_de_erro", script, true);
 
+
+                if (System.Web.HttpContext.Current.Items["callCrossHttpModule"] != null)
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE='JavaScript'>" + script + "</SCRIPT>");
+
             }
         }
     }

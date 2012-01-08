@@ -10,7 +10,7 @@ namespace Alfa.Core.Web
     public class SessionModule : IHttpModule
     {
         //private ITransaction _session;
-        private IUnitOfWork _session;
+       // private IUnitOfWork _session;
 
         public void Init(HttpApplication context)
         {
@@ -21,26 +21,28 @@ namespace Alfa.Core.Web
 
         private void context_Error(object sender, EventArgs e)
         {
-            if (_session != null)
-                _session.Rollback();
+            Locator.GetComponet<IUnitOfWork>().Rollback();
+            //if (_session != null)
+            //    _session.Rollback();
         }
 
         private void OpenSession(object sender, EventArgs e)
         {
-            _session = Locator.GetComponet<IUnitOfWork>();
-            _session.BeginTransaction();
+            Locator.GetComponet<IUnitOfWork>().BeginTransaction();
+            //_session = Locator.GetComponet<IUnitOfWork>();
+            //_session.BeginTransaction();
         }
 
         private void CloseSession(object sender, EventArgs e)
         {
-            //_session.Flush();
-            if (_session != null)
-                _session.Commit();
+            System.Web.HttpContext.Current.Items["callCrossHttpModule"] = true;
+            Locator.GetComponet<IUnitOfWork>().Commit();
         }
 
         public void Dispose()
         {
-            _session = null;
+            //Locator.GetComponet<IUnitOfWork>().
+            //_session = null;
         }
     }
 }
