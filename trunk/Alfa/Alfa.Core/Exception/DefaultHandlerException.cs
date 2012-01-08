@@ -1,6 +1,7 @@
 ﻿using Alfa.Core.Container;
 using Alfa.Core.Unit;
 using Castle.Core.Logging;
+using NHibernate;
 
 namespace Alfa.Core.Exception
 {
@@ -68,13 +69,20 @@ namespace Alfa.Core.Exception
         {
             return ex.GetType() == typeof(BusinessException);
         }
+
         private string GetMessage(System.Exception ex)
         {
             string message = "Não foi possível completar esta operação.";
 
             if (BusinessRuleViolated(ex)) return (ex.Message);
+            if (ConcorrencyViolated(ex)) return "Este registro foi alterado por outra transação. Tente novamente.";
 
             return message;
+        }
+
+        private bool ConcorrencyViolated(System.Exception ex)
+        {
+            return ex.GetType() == typeof(StaleObjectStateException);
         }
         private void RollbackTransaction()
         {
