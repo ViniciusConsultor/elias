@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Alfa.Core.Entity;
-
+using System.Linq;
 
 namespace Saude.Quimio.Entity
 {
@@ -14,7 +14,7 @@ namespace Saude.Quimio.Entity
     {
 
         #region "Atributos"
-        private IList<OpcaoResposta> opcaoRespostaLista = new List<OpcaoResposta>();
+        private IList<OpcaoResposta> opcoesDeResposta = new List<OpcaoResposta>();
         #endregion
 
         public Pergunta()
@@ -27,10 +27,20 @@ namespace Saude.Quimio.Entity
         public virtual bool? RespostaExclusiva { get; set; }
         public virtual int? Ordem { get; set; }
         public virtual int Version { get; set; }
-        public virtual IList<OpcaoResposta> OpcaoRespostaLista
+        public virtual IEnumerable<OpcaoResposta> OpcoesDeResposta
         {
-            get { return this.opcaoRespostaLista; }
-            set { this.opcaoRespostaLista = value; }
+            get { return opcoesDeResposta; }
+            private set { opcoesDeResposta = value.ToList(); }
+
+        }
+        public virtual void AddOpcaoResposta(OpcaoResposta opcaoResposta)
+        {
+            opcoesDeResposta.Add(opcaoResposta);
+            opcaoResposta.Pergunta = this;
+        }
+        public virtual void RemoveOpcaoResposta(OpcaoResposta opcaoResposta)
+        {
+            opcoesDeResposta.Remove(opcaoResposta);
         }
 
         #endregion
@@ -38,6 +48,8 @@ namespace Saude.Quimio.Entity
         public override IEnumerable<string> Validate()
         {
             if (Descricao == null) yield return "Descrição não informada.";
+            if (RespostaExclusiva == null) yield return "Resposta exclusiva não informada.";
+            if (Ordem == null) yield return "Ordem não informada.";
         }
     }
 }
