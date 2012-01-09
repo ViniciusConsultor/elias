@@ -47,6 +47,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saude.Quimio.UI", "Saude.Qu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saude.Quimio.Entity", "Saude.Quimio.Entity\Saude.Quimio.Entity.csproj", "{3EB1FDB3-D928-428B-BC81-3FB774399181}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{21FFD9D3-BA4E-4FC3-BA9E-60DDB5890A9F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Desktop\manual.doc = ..\..\..\..\..\Desktop\manual.doc
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
