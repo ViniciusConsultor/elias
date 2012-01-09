@@ -21,15 +21,16 @@ namespace Alfa.Core.Web
             {
                 Page page = HttpContext.Current.CurrentHandler as Page;
 
+                if (System.Web.HttpContext.Current.Items["callCrossHttpModule"] != null || page == null)
+                {   //chamada via module ou se não tem um contexto de pagina associado
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE='JavaScript'>" + script + "</SCRIPT>");
+                    return;
+                }
+
                 if (ScriptManager.GetCurrent(page) != null && ScriptManager.GetCurrent(page).IsInAsyncPostBack)
                     ScriptManager.RegisterStartupScript(page, page.GetType(), "script_de_erro", script, true);
                 else
                     page.ClientScript.RegisterStartupScript(page.GetType(), "script_de_erro", script, true);
-
-
-                if (System.Web.HttpContext.Current.Items["callCrossHttpModule"] != null)
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE='JavaScript'>" + script + "</SCRIPT>");
-
             }
         }
     }

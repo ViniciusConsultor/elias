@@ -86,7 +86,7 @@ namespace Saude.Quimio.UI
             Pergunta pergunta = rep.GetById(1);
 
             OpcaoResposta opcaoResposta = pergunta.OpcoesDeResposta.First();
-            pergunta.RemoveProduto(opcaoResposta);
+            pergunta.RemoveOpcaoResposta(opcaoResposta);
 
             rep.Save(pergunta);
         }
