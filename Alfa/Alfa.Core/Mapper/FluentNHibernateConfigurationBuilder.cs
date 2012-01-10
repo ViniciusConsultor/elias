@@ -11,7 +11,6 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using FluentNHibernate.Conventions;
 
-
 namespace Alfa.Core.Mapper
 {
     public class FluentNHibernateConfigurationBuilder : IConfigurationBuilder
@@ -44,8 +43,10 @@ namespace Alfa.Core.Mapper
             autoPersistenceModel.Conventions.Add<CascadeConvention>();
             autoPersistenceModel.Conventions.Add<ConcorrencyConvention>();
             autoPersistenceModel.Conventions.Add<EnumConvention>();
-            //return autoPersistenceModel;
-
+      
+            autoPersistenceModel.OverrideAll(
+                m => m.IgnoreProperties( property => property.Name.StartsWith("_")));
+       
             //autoPersistenceModel.Conventions.Add(new CascadeConvention(), new ConcorrencyConvention());
 
             return autoPersistenceModel;
