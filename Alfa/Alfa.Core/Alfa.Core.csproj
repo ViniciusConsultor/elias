@@ -105,6 +105,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AOP\Interceptor.cs" />
     <Compile Include="Container\Locator.cs" />
     <Compile Include="Exception\BusinessException.cs" />
     <Compile Include="Exception\DefaultHandlerException.cs" />
@@ -149,7 +150,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AOP\" />
     <Folder Include="Extension\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

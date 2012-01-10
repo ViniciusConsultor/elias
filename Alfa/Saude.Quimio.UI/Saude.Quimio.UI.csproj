@@ -147,10 +147,6 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Alfa.Core.AOP\Alfa.Core.AOP.csproj">
-      <Project>{B1617E88-9AE4-46A4-940E-0CC0FD684C09}</Project>
-      <Name>Alfa.Core.AOP</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Alfa.Core.Web\Alfa.Core.Web.csproj">
       <Project>{24EA51D0-A647-4E85-8195-FB26F30AE15D}</Project>
       <Name>Alfa.Core.Web</Name>

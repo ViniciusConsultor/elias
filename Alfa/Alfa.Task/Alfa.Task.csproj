@@ -133,10 +133,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Alfa.Core.AOP\Alfa.Core.AOP.csproj">
-      <Project>{B1617E88-9AE4-46A4-940E-0CC0FD684C09}</Project>
-      <Name>Alfa.Core.AOP</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Alfa.Core.Windows\Alfa.Core.Windows.csproj">
       <Project>{3E46ED5F-1416-486A-AB8D-AE628FE67D69}</Project>
       <Name>Alfa.Core.Windows</Name>
