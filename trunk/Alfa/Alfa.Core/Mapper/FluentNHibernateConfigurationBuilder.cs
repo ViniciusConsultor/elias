@@ -43,6 +43,8 @@ namespace Alfa.Core.Mapper
             autoPersistenceModel.Conventions.Add<CascadeConvention>();
             autoPersistenceModel.Conventions.Add<ConcorrencyConvention>();
             autoPersistenceModel.Conventions.Add<EnumConvention>();
+            autoPersistenceModel.Conventions.Add<NotNullPropertyConvention>();
+
       
             autoPersistenceModel.OverrideAll(
                 m => m.IgnoreProperties( property => property.Name.StartsWith("_")));
