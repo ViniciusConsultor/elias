@@ -20,7 +20,7 @@ namespace Saude.Quimio.Entity
         public Pergunta()
         {
         }
-
+        public virtual int _Calculada { get; set; }
         #region "Propriedades"
         public virtual int Id { get; private set; }
         public virtual string Descricao { get; set; }
