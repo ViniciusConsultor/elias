@@ -25,7 +25,7 @@ namespace Saude.Quimio.Entity
         public virtual int Id { get; private set; }
         public virtual string Descricao { get; set; }
         public virtual bool? RespostaExclusiva { get; set; }
-        public virtual int? Ordem { get; set; }
+        public virtual int Ordem { get; set; }
         public virtual int Version { get; set; }
         public virtual IEnumerable<OpcaoResposta> OpcoesDeResposta
         {

@@ -111,6 +111,7 @@
     <Compile Include="Exception\DefaultHandlerException.cs" />
     <Compile Include="Exception\IHandlerException.cs" />
     <Compile Include="Mapper\Convention\EnumConvention.cs" />
+    <Compile Include="Mapper\Convention\NotNullPropertyConvention .cs" />
     <Compile Include="Message\IHandlerMessage.cs" />
     <Compile Include="Message\DefaultHandlerMessage.cs" />
     <Compile Include="Mapper\AssemblyConfig.cs" />
