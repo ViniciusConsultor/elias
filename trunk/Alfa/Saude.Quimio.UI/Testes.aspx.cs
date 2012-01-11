@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Alfa.Core.Container;
 using Saude.Quimio.Entity;
 using Alfa.Core.Repository;
+using Castle.Core.Logging;
 
 namespace Saude.Quimio.UI
 {
@@ -14,7 +15,7 @@ namespace Saude.Quimio.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Alfa.Core.Mapper.ConfigurationBuilder.Create();
+            NullLogger.Instance.Info("entrou na pagina");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -36,7 +37,7 @@ namespace Saude.Quimio.UI
             IRepository<Pergunta> rep = Locator.GetComponet<IRepository<Pergunta>>();
             Pergunta pergunta = rep.GetById(1);
             pergunta.Descricao = null;
-            rep.Save(pergunta);            
+            rep.Save(pergunta);
         }
 
         protected void Button3_Click(object sender, EventArgs e)
