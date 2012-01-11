@@ -14,7 +14,7 @@ namespace Saude.Quimio.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Alfa.Core.Mapper.FluentNHibernateConfigurationBuilder.Create();
+            Alfa.Core.Mapper.ConfigurationBuilder.Create();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
