@@ -118,7 +118,7 @@
     <Compile Include="Mapper\Convention\CascadeConvention.cs" />
     <Compile Include="Mapper\AutomappingConfiguration.cs" />
     <Compile Include="Mapper\Convention\ConcorrencyConvention.cs" />
-    <Compile Include="Mapper\FluentNHibernateConfigurationBuilder.cs" />
+    <Compile Include="Mapper\ConfigurationBuilder.cs" />
     <Compile Include="Mapper\NHibernateLinqExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entity\EntityBase.cs" />

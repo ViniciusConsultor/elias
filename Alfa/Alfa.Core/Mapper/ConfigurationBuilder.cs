@@ -13,7 +13,7 @@ using FluentNHibernate.Conventions;
 
 namespace Alfa.Core.Mapper
 {
-    public class FluentNHibernateConfigurationBuilder : IConfigurationBuilder
+    public class ConfigurationBuilder : IConfigurationBuilder
     {
         public Configuration GetConfiguration(IConfiguration facilityConfiguration)
         {
@@ -45,10 +45,10 @@ namespace Alfa.Core.Mapper
             autoPersistenceModel.Conventions.Add<EnumConvention>();
             autoPersistenceModel.Conventions.Add<NotNullPropertyConvention>();
 
-      
+
             autoPersistenceModel.OverrideAll(
-                m => m.IgnoreProperties( property => property.Name.StartsWith("_")));
-       
+                m => m.IgnoreProperties(property => property.Name.StartsWith("_")));
+
             //autoPersistenceModel.Conventions.Add(new CascadeConvention(), new ConcorrencyConvention());
 
             return autoPersistenceModel;
@@ -56,32 +56,49 @@ namespace Alfa.Core.Mapper
 
         public static void Create()
         {
-            new FluentNHibernateConfigurationBuilder().CreateDatabase();
+            new ConfigurationBuilder().CreateDatabase();
         }
-
+        public static void Drop()
+        {
+            new ConfigurationBuilder().DropDataBase();
+        }
+        public void DropDataBase()
+        {
+            Fluently.Configure()
+                .Database(MsSqlConfiguration.MsSql2005
+                .ConnectionString(c => c
+                .FromConnectionStringWithKey("connectionString"))
+                .ShowSql())
+                .Mappings(m => m
+                .AutoMappings.Add(CreateAutomappings()))
+                .ExposeConfiguration(DropSchema)
+                .BuildSessionFactory();
+        }
         public void CreateDatabase()
         {
             Fluently.Configure()
-               .Database(MsSqlConfiguration.MsSql2005
-               .ConnectionString(c => c
-               .FromConnectionStringWithKey("connectionString"))
-               .Cache(c => c
-               .UseQueryCache()
-               .ProviderClass<HashtableCacheProvider>())
-               .ShowSql())
-               .Mappings(m => m
-               .AutoMappings.Add(CreateAutomappings()))
-               .ExposeConfiguration(BuildSchema)
-               .BuildSessionFactory();
+                .Database(MsSqlConfiguration.MsSql2005
+                .ConnectionString(c => c
+                .FromConnectionStringWithKey("connectionString"))
+                .Cache(c => c
+                .UseQueryCache()
+                .ProviderClass<HashtableCacheProvider>())
+                .ShowSql())
+                .Mappings(m => m
+                .AutoMappings.Add(CreateAutomappings()))
+                .ExposeConfiguration(BuildSchema)
+                .BuildSessionFactory();
         }
-
         private static void BuildSchema(Configuration config)
         {
             // this NHibernate tool takes a configuration (with mapping info in)
             // and exports a database schema from it
             new SchemaUpdate(config).Execute(true, true);
-            //new SchemaExport(config)
-            //    .Create((true, true);
+            //.Create((true, true);
+        }
+        private static void DropSchema(Configuration config)
+        {
+            new SchemaExport(config).Drop(true, true);
         }
     }
 }
