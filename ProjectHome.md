@@ -1,0 +1,1 @@
+framework aberto para uso em projetos de software
